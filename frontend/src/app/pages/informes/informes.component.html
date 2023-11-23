@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            {{title}}
+        </div>
+        <div class="card-body">
+            <div class="container text-center">
+                <div class="row">
+                    <h4>Seleccionar un rago de fechas </h4>
+
+                </div>
+
+
+                <form #informeForm="ngForm">
+                    <div>
+                        <label for="fechaInicio">Fecha de inicio:</label>
+                        <input type="date" id="fechaInicio" name="fechaInicio" [(ngModel)]="rangoFechas.fechaInicio"
+                            required>
+                    </div>
+                    <div>
+                        <label for="fechaFinal">Fecha final:</label>
+                        <input type="date" id="fechaFinal" name="fechaFinal" [(ngModel)]="rangoFechas.fechaFinal"
+                            required>
+                    </div>
+                    <button class="btn btn-primary" role="button" (click)='buscar()'>Buscar</button>
+                </form>
+
+
+            </div>
+            <div class="row m-2">
+                <button type="button" class="btn  btn-danger" (click)="irALink()" style="width: 50px;">
+                    <i class=" fas fa-light fa-file-pdf"></i></button>
+            </div>
+            <div class="row ">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Divicion</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Cartucho</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Justificacion</th>
+                            <th scope="col">Observacion</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Fecha</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="odd" *ngFor="let item of solicitudes">
+                            <td>{{item.usuario.persona.servicio.nombre !== null?item.usuario.persona.servicio.nombre
+                                :"---"}}
+                            </td>
+                            <td>
+                                {{item.usuario.persona.apellido}}
+                                {{item.usuario.persona.nombre}}
+
+                            </td>
+
+                            <td *ngFor="let car of item.cartuchos">
+                                {{car.marca.nombre}}
+                                {{car.modelo}}
+                            </td>
+                            <td>
+                                ---
+                            </td>
+                            <td>
+                                {{item.cantidad}}
+                            </td>
+                            <td>
+                                {{item.justificacion}}
+                            </td>
+                            <td>
+                                {{item.observacion}}
+                            </td>
+                            <td>
+                                <span class="text-bg-warning">{{item.estado.descripcion}}</span>
+                            </td>
+                            <td>
+                                {{item.fechaCreacion}}
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="row">
+
+    <div class="card">
+       <div class="card-header">
+        <h3>Solicitudes</h3>
+        </div>
+        <div class="card-header">
+           <h4>Búsqueda</h4>
+        </div>
+        <div class="card-body">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                        <div class="dropdown-center">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Estado de Solicitud
+                            </button>
+                            <ul class="dropdown-menu" >
+                                <li *ngFor="let item of estados"><a class="dropdown-item">{{item.descripcion}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                   
+                            <div class="container-fluid">
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                                </form>
+                            </div>
+                       
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary">Mostrar Todo</button>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="row m-2">
+
+            </div>
+            <div class="row ">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                           
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Cartucho</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Justificación</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cambiar</th>
+                            <th></th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                            <tr  class="odd" *ngFor="let item of solicitudes">
+                                                                <td>{{item.usuario.username}}
+                                </td>
+                                <td *ngFor="let car of item.cartuchos">
+                                    {{car.marca.nombre}} {{car.modelo}}
+                                </td>
+                                
+                                <td>
+                                    {{item.descripcion}}
+                                </td>
+                                <td>
+                                    {{item.justificacion}}
+                                </td>
+                                <td>
+                                    <span class="text-bg-warning">{{item.estado.descripcion}}</span>
+                                </td>
+                                <td>
+                                    {{item.fecha_creacion}}
+                                </td>
+                                <td>
+                                    <!-- Example single danger button -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Estado
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li *ngFor="let item of estados" [routerLink]="['/solicitudes',item.id]"><a class="dropdown-item">{{item.descripcion}}</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                  
+          
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
