@@ -22,7 +22,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: monisis/monisis/imagentpfinal:latest
+        tags: monisis/imagentpfinal:latest
         secrets: |
           ${{ secrets.DOCKER_USERNAME }}
           ${{ secrets.DOCKER_PASSWORD }}
