@@ -26,3 +26,4 @@ jobs:
         secrets: |
           ${{ secrets.DOCKER_USERNAME }}
           ${{ secrets.DOCKER_PASSWORD }}
+          ${{ secrets.DOCKER_TOKEN }}
